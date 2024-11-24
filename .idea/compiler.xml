@@ -8,6 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cart-service" />
+        <module name="pay-service" />
+        <module name="trade-service" />
+        <module name="user-service" />
         <module name="hm-service" />
         <module name="item-serv" />
         <module name="hm-api" />
@@ -15,6 +18,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hm-common" target="11" />
+      <module name="hmall" target="11" />
       <module name="item-service" target="11" />
       <module name="tiem-service" target="11" />
     </bytecodeTargetLevel>
@@ -27,7 +31,10 @@
       <module name="hm-service" options="-parameters" />
       <module name="item-serv" options="-parameters" />
       <module name="item-service" options="-parameters" />
+      <module name="pay-service" options="-parameters" />
       <module name="tiem-service" options="-parameters" />
+      <module name="trade-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
     </option>
   </component>
 </project>

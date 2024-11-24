@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 @Api(tags = "用户相关接口")
 @RestController
 @RequestMapping("/users")
