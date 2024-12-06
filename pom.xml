@@ -14,7 +14,10 @@
         <module>item-serv</module>
         <module>hm-api</module>
         <module>trade-service</module>
-
+        <module>hm-gateway</module>
+        <module>user-service</module>
+        <module>cart-service</module>
+        <module>pay-service</module>
 
     </modules>
 
