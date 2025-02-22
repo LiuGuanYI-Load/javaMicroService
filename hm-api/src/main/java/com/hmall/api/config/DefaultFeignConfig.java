@@ -1,5 +1,6 @@
 package com.hmall.api.config;
 
+import com.hmall.api.client.fallback.ItemClientFallback;
 import com.hmall.common.utils.UserContext;
 import feign.Logger;
 import feign.RequestInterceptor;
@@ -26,6 +27,11 @@ public class DefaultFeignConfig {
                 // 如果不为空则放入请求头中，传递给下游微服务
                 template.header("user-info", userId.toString());
             }
+
         };
+    }
+    @Bean
+    public ItemClientFallback itemClientFallabck(){
+        return new ItemClientFallback();
     }
 }

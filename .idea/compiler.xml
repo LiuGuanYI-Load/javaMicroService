@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="2048" />
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
@@ -14,8 +15,14 @@
         <module name="hm-common" />
         <module name="user-service" />
         <module name="hm-service" />
-        <module name="item-serv" />
         <module name="hm-api" />
+        <module name="item-serv" />
+      </profile>
+      <profile name="Annotation profile for hmall" enabled="true">
+        <sourceOutputDir name="../trade-service/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../trade-service/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="trade-service (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -35,6 +42,7 @@
       <module name="pay-service" options="-parameters" />
       <module name="tiem-service" options="-parameters" />
       <module name="trade-service" options="-parameters" />
+      <module name="trade-service (1)" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
   </component>

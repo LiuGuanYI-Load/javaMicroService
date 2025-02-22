@@ -13,9 +13,11 @@ import com.hmall.trade.domain.po.OrderDetail;
 import com.hmall.trade.mapper.OrderMapper;
 import com.hmall.trade.service.IOrderDetailService;
 import com.hmall.trade.service.IOrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ import java.util.stream.Collectors;
  * 服务实现类
  * </p>
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements IOrderService {
@@ -35,9 +38,10 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
     private final ItemClient itemClient;
     private final IOrderDetailService detailService;
     private final CartClient cartClient;
+    private final RabbitTemplate rabbitTemplate;
 
     @Override
-    @Transactional
+    @GlobalTransactional
     public Long createOrder(OrderFormDTO orderFormDTO) {
         // 1.订单数据
         Order order = new Order();
@@ -76,8 +80,16 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
             throw new RuntimeException("库存不足！");
         }
 
+
+
         // 4.清理购物车商品
-        cartClient.deleteCartItemByIds(itemIds);
+//        cartClient.deleteCartItemByIds(itemIds);
+        //exhcange 交换机  routingKey 路由key  object (parameters)
+//        try {
+//            rabbitTemplate.convertAndSend("trade.topic","cart.clear",detailDTOS );
+//        } catch (AmqpException e) {
+//            log.error("清除购物车失败，订单id：{},用户id ：{}，", order.getId(),order.getUserId(),e);
+//        }
         return order.getId();
     }
 
